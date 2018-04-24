@@ -1,0 +1,51 @@
+---
+# defaults file for ansible-elastic-heartbeat
+elastic_version: 6.x
+kibana_host: "http://localhost:5601"
+elasticsearch_hosts:
+  - localhost:9200
+
+
+# valid values: elasticsearch, logstash
+heartbeat_output: elasticsearch
+
+elasticsearch_protocol: http
+
+# authentication if needed
+# elasticsearch_username: elastic
+# elasticsearch_password: password
+
+# Available log levels are: error, warning, info, debug
+log_level: info
+
+heartbeat_xpack_monitoring_enabled: false
+
+heartbeat_name: "{{ ansible_fqdn }}"
+heartbeat_tags: []
+  # - service-X
+  # - web-tier
+
+# These settings control loading the sample dashboards to the Kibana index. Loading
+# the dashboards is disabled by default and can be enabled either by setting the
+# options here, or by using the `-setup` CLI flag or the `setup` command.
+heartbeat_setup_dashboards: false
+
+# The URL from where to download the dashboards archive. By default this URL
+# has a value which is computed based on the Beat name and version. For released
+# versions, this URL points to the dashboard archive on the artifacts.elastic.co
+# website.
+# heartbeat_dashboards_url:
+
+monitors:
+  # https://www.elastic.co/guide/en/beats/heartbeat/current/configuration-heartbeat-options.html#monitor-http-options
+  http:
+    schedule: "'@every 5s'"
+    urls:
+      - http://localhost:80
+    check.request:
+      method: POST
+      headers:
+        content-type: 'application/json'
+      body:
+        '{"allimps":0}'
+    timeout: 5s

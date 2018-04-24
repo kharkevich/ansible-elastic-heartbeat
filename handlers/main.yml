@@ -1,0 +1,9 @@
+---
+# handlers file for ansible-elastic-heartbeat
+- name: ensure heartbeat is started and enabled
+  listen: restart_heartbeat
+  service:
+    name: heartbeat-elastic
+    state: restarted
+    enabled: yes
+  become: yes

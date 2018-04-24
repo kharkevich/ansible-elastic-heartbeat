@@ -1,0 +1,20 @@
+---
+# tasks file for ansible-elastic-heartbeat
+- include_tasks: "{{ ansible_os_family }}.yml"
+
+- name: Install Heartbeat
+  package:
+    name: heartbeat-elastic
+    state: present
+  notify: restart_heartbeat
+  become: yes
+
+- name: Copy Heartbeat configuration.
+  template:
+    src: heartbeat.yml.j2
+    dest: "/etc/heartbeat/heartbeat.yml"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart_heartbeat
+  become: yes
