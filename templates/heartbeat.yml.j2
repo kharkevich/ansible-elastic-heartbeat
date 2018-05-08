@@ -11,18 +11,9 @@
 
 # Configure monitors
 heartbeat.monitors:
-{% for monitor_name, monitor_settings in monitors.items() %}
-  - type: {{ monitor_name }}
-{% for key, val in monitor_settings.items() %}
-{% if val is iterable and val is not string %}
-    {{ key }}:
-{% for val2 in val %}
-      - {{ val2 }}
-{% endfor %}
-{% else %}
-    {{ key }}: {{ val }}
-{% endif %}
-{% endfor %}
+{% for monitor_item in monitors %}
+  - type: {{ monitor_item.type }}
+    {{ monitor_item.monitor_options | to_yaml | indent(4)}}
 {% endfor %}
 
 #==================== Elasticsearch template setting ==========================
