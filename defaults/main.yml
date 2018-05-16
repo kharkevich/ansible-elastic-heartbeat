@@ -9,6 +9,9 @@ elasticsearch_hosts:
 # valid values: elasticsearch, logstash
 heartbeat_output: elasticsearch
 
+# custom index name for heartbeat
+# heartbeat_index_name: heartbeat
+
 elasticsearch_protocol: http
 
 # authentication if needed

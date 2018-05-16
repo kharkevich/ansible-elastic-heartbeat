@@ -1,5 +1,7 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    heartbeat_index_name: customindex
   roles:
     - role: ansible-elastic-heartbeat
