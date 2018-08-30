@@ -4,7 +4,6 @@ galaxy_info:
   role_name: "elastic_heartbeat"
   description: >
     Deploy Heartbeat: Lightweight Shipper for Uptime Monitoring
-  company:
 
   issue_tracker_url: https://github.com/kharkevich/ansible-elastic-metricbeat/issues
 
