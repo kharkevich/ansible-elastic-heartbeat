@@ -1,6 +1,7 @@
 ---
 galaxy_info:
   author: Aliaksandr Kharkevich
+  role_name: "elastic_heartbeat"
   description: >
     Deploy Heartbeat: Lightweight Shipper for Uptime Monitoring
   company:

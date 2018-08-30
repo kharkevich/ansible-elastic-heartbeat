@@ -5,5 +5,5 @@
   service:
     name: heartbeat-elastic
     state: restarted
-    enabled: yes
-  become: yes
+    enabled: True
+  become: True

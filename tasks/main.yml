@@ -7,7 +7,9 @@
     name: heartbeat-elastic
     state: present
   notify: restart_heartbeat
-  become: yes
+  tags:
+    - install-packages
+  become: True
 
 - name: Copy Heartbeat configuration.
   template:
@@ -17,4 +19,4 @@
     group: root
     mode: 0644
   notify: restart_heartbeat
-  become: yes
+  become: True

@@ -21,17 +21,17 @@ elasticsearch_protocol: http
 # Available log levels are: error, warning, info, debug
 log_level: info
 
-heartbeat_xpack_monitoring_enabled: false
+heartbeat_xpack_monitoring_enabled: False
 
 heartbeat_name: "{{ ansible_fqdn }}"
 heartbeat_tags: []
-  # - service-X
-  # - web-tier
+#  - service-X
+#  - web-tier
 
 # These settings control loading the sample dashboards to the Kibana index. Loading
 # the dashboards is disabled by default and can be enabled either by setting the
 # options here, or by using the `-setup` CLI flag or the `setup` command.
-heartbeat_setup_dashboards: false
+heartbeat_setup_dashboards: False
 
 # The URL from where to download the dashboards archive. By default this URL
 # has a value which is computed based on the Beat name and version. For released
@@ -40,7 +40,7 @@ heartbeat_setup_dashboards: false
 # heartbeat_dashboards_url:
 
 monitors:
-  # https://www.elastic.co/guide/en/beats/heartbeat/current/configuration-heartbeat-options.html#monitor-http-options
+  # https://www.elastic.co/guide/en/beats/heartbeat/current/configuration-heartbeat-options.html
   - type: http
     monitor_options:
       schedule: '@every 5s'
